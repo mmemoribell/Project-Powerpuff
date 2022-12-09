@@ -4,22 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
-    <!-- Global CSS (CSS rules you want applied to all pages) -->
+    href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
     <link rel="stylesheet" href="/global.css" />
 
     <!-- Page-specific CSS -->
@@ -28,15 +24,7 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
-
     <link rel="stylesheet" href="posts.css">
-   
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
-      rel="stylesheet"
-    />
     <title>POWERPUFF UNIVERSE</title>
     <!-- Run BEFORE page is finished loading (before window.onload): -->
     <script src="/logInPage/auth.js"></script>
@@ -45,7 +33,12 @@
     <script>
       if (isLoggedIn() === false) window.location.replace("/logInPage");
     </script>
-
+    
+    <style>
+    body {
+      font-family: "Audiowide", sans-serif;
+    }
+    </style>
 <nav>
   <header class="p-3 text-bg-dark">
     <div class="container">
@@ -53,15 +46,16 @@
         <a href="/profilePage/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
           <img height="50em" src="/profilePage/image/IMG_0153.png" alt="profile">
         </a>
-
+        <h4></h4>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 mr-2">
           <li><a href="/posts/" class="nav-link px-2 text-white">Living Space</a></li>
           <li><a href="/profilePage/" class="nav-link px-2 text-white">Bedroom</a></li>
         </ul>
 
-        <div class="text-end">
+        <div class="text-end" id="nav">
           <button type="button" class="btn btn-warning"><a class="nav-link" href="/registerPage/register.html">Sign-up</a></button>
           <button class="btn btn-danger p-2 m-2" id="logoutButton" onclick="logout();">Mission Abort!</button>
+        </h4>
         </div>
       </div>
     </div>
@@ -73,7 +67,7 @@
     <div class="card card-1">
       <div class="card__icon"><i class="fas fa-bolt"></i></div>
       <p class="card__exit"><i class="fas fa-times"></i></p>
-      <h5 class="card-title">Animosity Vi Brittania</h5>
+      <h4 class="card-title">Animosity Vi Brittania</h4>
       <p class="card-apply">
         <a class="card__link" href="#">gotta make some posts<i class="fas fa-arrow-right"></i></a>
       </p>
@@ -81,7 +75,7 @@
     <div class="card card-2">
       <div class="card__icon"><i class="fas fa-bolt"></i></div>
       <p class="card__exit"><i class="fas fa-times"></i></p>
-      <h5 class="card-title">eric-pluralsight</h5>
+      <h4 class="card-title">eric-pluralsight</h4>
       <p class="card-apply">
         <a class="card__link" href="#">This is a post<i class="fas fa-arrow-right"></i></a>
       </p>
@@ -89,7 +83,7 @@
     <div class="card card-3">
       <div class="card__icon"><i class="fas fa-bolt"></i></div>
       <p class="card__exit"><i class="fas fa-times"></i></p>
-      <h525 class="card-title">ericSchwartz</h5>
+      <h4 class="card-title">ericSchwartz</h4>
       <p class="card-apply">
         <a class="card-link" href="#">Eric was here<i class="fas fa-arrow-right"></i></a>
       </p>
@@ -97,7 +91,7 @@
     <div class="card card-4">
       <div class="card__icon"><i class="fas fa-bolt"></i></div>
       <p class="card__exit"><i class="fas fa-times"></i></p>
-      <h5 class="card-title">PatrickJ</h5>
+      <h4 class="card-title">PatrickJ</h4>
       <p class="card-apply">
         <a class="card__link" href="#">Posty Post<i class="fas fa-arrow-right"></i></a>
       </p>
@@ -105,7 +99,7 @@
     <div class="card card-5">
       <div class="card__icon"><i class="fas fa-bolt"></i></div>
       <p class="card__exit"><i class="fas fa-times"></i></p>
-      <h5 class="card-title">Suniverse</h5>
+      <h4 class="card-title">Suniverse</h4>
       <p class="card-apply">
         <a class="card__link" href="#">a gaint WOMAN<i class="fas fa-arrow-right"></i></a>
       </p>
@@ -113,7 +107,7 @@
     <div class="card card-1">
       <div class="card__icon"><i class="fas fa-bolt"></i></div>
       <p class="card__exit"><i class="fas fa-times"></i></p>
-      <h5 class="card-title">kevinelong@gmail.com</h5>
+      <h4 class="card-title">kevinelong@gmail.com</h4>
       <p class="card-apply">
         <a class="card__link" href="#">third time is a charm<i class="fas fa-arrow-right"></i></a>
       </p>
