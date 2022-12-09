@@ -1,11 +1,11 @@
 "use strict";
 
-const api = "https://microbloglite.herokuapp.com/";
+// const api = "https://microbloglite.herokuapp.com/";
 const $q = (selector) => document.querySelector(selector);
 const fullName = $q("#fullName");
 const username = $q("#username");
 const bio = $q("#bio");
-// const editButton = $q("#editButton");
+const editButton = $q("#editButton");
 const postText = $q("#postText");
 const contentDiv = $q("#contentDiv");
 const messagePara = $q("#messagePara");
@@ -36,7 +36,7 @@ function loadProfileInfo() {
       "Content-Type": "application/json",
     },
   };
-  fetch(api + "api/users/" + loginData.username, options)
+  fetch("https://microbloglite.herokuapp.com/" + "api/users/" + loginData.username, options)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -63,7 +63,7 @@ function postBubblyThoughts(event) {
       text: postText.value,
     }),
   };
-  fetch(api + "api/posts", options)
+  fetch("https://microbloglite.herokuapp.com/" + "api/posts", options)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -95,11 +95,12 @@ function editProfile(event) {
           // fullName: fullNameInput.value,
         })
     }
-    fetch(api + "api/users/" + loginData.username, options)
+    fetch("https://microbloglite.herokuapp.com/" + "api/users/" + loginData.username, options)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
       messageDiv.innerText = `Saved successfully! Please refresh your room.`
+      // window.location.replace("/profilePage/");
     });
 }
 
@@ -118,7 +119,7 @@ function logout() {
     },
   };
 
-  fetch(api + "/auth/logout", options)
+  fetch("https://microbloglite.herokuapp.com/" + "/auth/logout", options)
     .then((response) => response.json())
     .then((data) => console.log(data))
     .finally(() => {
