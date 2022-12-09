@@ -1,13 +1,20 @@
 "use strict";
 
-const api = "https://microbloglite.herokuapp.com/";
+// const api = "https://microbloglite.herokuapp.com/";
 const $q = (selector) => document.querySelector(selector);
 const fullName = $q("#fullName");
 const username = $q("#username");
 const bio = $q("#bio");
-// const editButton = $q("#editButton");
+const editButton = $q("#editButton");
 const postText = $q("#postText");
 const contentDiv = $q("#contentDiv");
+const messagePara = $q("#messagePara");
+const editForm = $q("#editForm");
+editForm.style.display = "none";
+// const passwordInput = $q("#passwordInput");
+// const fullNameInput = $q("#fullNameInput");
+const bioInput = $q("#bioInput");
+const messageDiv = $q("#messageDiv");
 
 // You can use this to get the login data of the logged-in user (if any).
 // Returns either an object including the username and token,
@@ -29,7 +36,7 @@ function loadProfileInfo() {
       "Content-Type": "application/json",
     },
   };
-  fetch(api + "api/users/" + loginData.username, options)
+  fetch("https://microbloglite.herokuapp.com/" + "api/users/" + loginData.username, options)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -42,7 +49,6 @@ function loadProfileInfo() {
 function postBubblyThoughts(event) {
   event.preventDefault();
   const loginData = getLoginData();
-  let content = postText.innerText;
   const options = {
     method: "POST",
     headers: {
@@ -53,29 +59,50 @@ function postBubblyThoughts(event) {
       Authorization: `Bearer ${loginData.token}`,
       "Content-Type": "application/json",
     },
+    body: JSON.stringify({
+      text: postText.value,
+    }),
   };
-  fetch(api + "api/posts/", options)
+  fetch("https://microbloglite.herokuapp.com/" + "api/posts", options)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      
+      messagePara.innerText = `Powerpuff Universe has received your thought!`;
     });
 }
 
-//Edit Feauture pls do if have time at the end !!!!!!!!!!
-// function editProfile() {
-//     const loginData = getLoginData();
-//     fetch(api + "api/users/" + loginData.username)
+function unhiddenEditForm() {
+  editForm.style.display = "block";
+}
 
-//     const options = {
-//         method: "PUT",
-//         headers: {
-//             "Content-Type": "application/json",
-//             Authorization: `Bearer ${loginData.token}`,
-//         },
-//         body: JSON.stringify(editInfo)
-//     }
-// }
+function hideEditForm() {
+  editForm.style.display = "none";
+}
+
+function editProfile(event) {
+  event.preventDefault();
+    const loginData = getLoginData();
+
+    const options = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${loginData.token}`,
+        },
+        body: JSON.stringify({
+          // password: passwordInput.value,
+          bio: bioInput.value,
+          // fullName: fullNameInput.value,
+        })
+    }
+    fetch("https://microbloglite.herokuapp.com/" + "api/users/" + loginData.username, options)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      messageDiv.innerText = `Saved successfully! Please refresh your room.`
+      // window.location.replace("/profilePage/");
+    });
+}
 
 function logout() {
   const loginData = getLoginData();
@@ -92,7 +119,7 @@ function logout() {
     },
   };
 
-  fetch(api + "/auth/logout", options)
+  fetch("https://microbloglite.herokuapp.com/" + "/auth/logout", options)
     .then((response) => response.json())
     .then((data) => console.log(data))
     .finally(() => {
@@ -106,6 +133,6 @@ function logout() {
 }
 
 window.onload = () => {
-  // editButton.onlick = editProfile;
+  editButton.onlick = editProfile;
   loadProfileInfo();
 };

@@ -24,33 +24,67 @@
       crossorigin="anonymous"
     />
     <!-- JavaScript Bundle with Popper -->
-    <script defer
+    <script
+      defer
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
+    <script src="/logInPage/auth.js"></script>
+    <script>
+      if (isLoggedIn() === false) window.location.replace("/logInPage");
+    </script>
     <script defer src="profile.js"></script>
-    <link rel="stylesheet" href="profile.css">
-    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="profile.css" />
+    <link rel="stylesheet" href="../global.css" />
     <title>Profile</title>
   </head>
   <body>
     <nav>
-
-
+      <header class="p-3 text-bg-dark">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/profilePage/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+              <img height="50em" src="image/IMG_0153.png" alt="profile">
+            </a>
+    
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 mr-2">
+              <li><a href="/posts/" class="nav-link px-2 text-white">Living Space</a></li>
+              <li><a href="/profilePage/" class="nav-link px-2 text-white">Bedroom</a></li>
+            </ul>
+    
+            <div class="text-end">
+              <button type="button" class="btn btn-warning"><a class="nav-link" href="/registerPage/">Sign-up</a></button>
+              <button class="btn btn-danger p-2 m-2" id="logoutButton" onclick="logout();">Mission Abort!</button>
+            </div>
+          </div>
+        </div>
+      </header>
     </nav>
-    <div class="text-center text-success" id="fullName"></div>
-    <div class="text-center" id="username"></div>
-    <div class="text-center text-muted" id="bio"></div>
-    <!-- <button id="editButton" class="btn btn-info m-2">Edit Profile</button> -->
+    
+    <div class="container">
+      <img class="d-block mx-auto mt-4" src="image/IMG_0153.png" alt="Profile Picture" height="150px">
+      <div class="text-center text-success mt-2" id="fullName"></div>
+      <div class="text-center" id="username"></div>
+      <div class="text-center text-muted" id="bio"></div>
+      <button onclick="unhiddenEditForm();" id="editButton" class="btn btn-info">Edit My Bio</button>
+      <form onsubmit="editProfile(event);" id="editForm">
+        <!-- <input id="passwordInput" class="form-control w-50 m-2" type="text" placeholder="Edit Password"> -->
+        <!-- <input id="fullNameInput" class="form-control w-50 m-2" type="text" placeholder="Edit Name"> -->
+        <input id="bioInput" class="form-control w-50 m-2" type="text" placeholder="Edit Bio">
+        <button type="submit" class="btn btn-warning">Make Changes</button>
+        <button class="btn btn-danger" onclick="hideEditForm();">Nevermind</button>
+        <div id="messageDiv" class="text-success"></div>
+      </form>
 
-    <form class="m-3" onsubmit="postBubblyThoughts(event);">
-      <label for="postText">Type your bubbly thoughts away..</label>
-      <textarea id="postText" class="form-control" rows="5" required></textarea>
-      <button class="btn btn-success m-2" type="submit">Send~</button>
-    </form>
+      <form class="m-3" onsubmit="postBubblyThoughts(event);">
+        <label for="postText"><h4>Type your bubbly thoughts away..</h4></label>
+        <textarea id="postText" class="form-control" rows="5" required></textarea>
+        <button class="btn btn-success m-2" type="submit">Send~</button>
+      </form>
+      <p id="messagePara" class="text-success"></p>
 
-    <button class="btn btn-danger p-2 m-2" id="logoutButton" onclick="logout();">Mission Abort!</button>
-    <div id="contentDiv"></div>
+      <div id="contentDiv"></div>
+    </div>
   </body>
 </html>
