@@ -1,20 +1,29 @@
- "use strict"; function getLoginData () { return JSON.parse(window.localStorage.getItem("login-data")) || {}; } 
+ "use strict"; function getLoginData () 
+ { return JSON.parse(window.localStorage.getItem("login-data")) || {}; } 
+
  // this is the cards where the post will show up 
- et postsDiv = document.querySelector("#posts"); 
+
+ let postsDiv = document.querySelector("#posts"); 
+
  // log in auth 
+
  const loginData = getLoginData(); 
  const options = { headers: { Authorization: `Bearer ${loginData.token}`, } } 
  // api calling username 
+
  function postUser() { fetch( api + "/api/users/", options) 
  .then(response => response.json()) 
  .then(data => 
   { let postData = data.username; }); } 
+  
   const username = postUser(); 
+
   function postId() { 
     fetch( api + "/api/posts/", options) 
     .then(response => response.json()) 
     .then(data => { 
-      let postIdNum = data.postId; }); } 
+      let postIdNum = data.postId; 
+    }); } 
       const postNum = postId(); 
       function postTextM() { 
         fetch( api + "/api/posts/", options) 
@@ -24,7 +33,9 @@
           console.log(postW); }); 
         } 
       const postText = postTextM(); 
+
       // Function to get all users via fetch() 
+
       function getAllUsers () {
          // GET /api/users 
          const loginData = getLoginData(); 
@@ -35,14 +46,18 @@
           .then(users => { 
 
             const posts = fetch(api + "/api/posts", options)
-  .then(response => response.json())
-  .then(post => post);
-  posts.then(post => console.table(post))
-console.log(posts)
- // Promise {<pending>}
+             .then(response => response.json())
+             .then(post => post);
+              posts.then(post => console.table(post))
+              console.log(posts)
+
+              // Promise {<pending>}
             // Do something with the users array... 
             console.log(users); 
-          }); } function createCard(post) { 
+          }); 
+        }
+
+           function createCard(post) { 
             const cardDiv = document.createElement("div"); 
             cardDiv.classList.add("card");
             cardDiv.style.width = "18rem"; 
@@ -60,7 +75,7 @@ console.log(posts)
             cardDiv.appendChild(cardBody); 
             cardBody.append(heading5, heading6, paragraph); return cardBody; } 
 
- window.onload = () => { 
-  for (const post of posts) { 
-    const card = createCard(post); 
-    postsDiv.appendChild(card); } };
+    window.onload = () => { 
+       for (const post of posts) { 
+       const card = createCard(post); 
+        postsDiv.appendChild(card); } };
